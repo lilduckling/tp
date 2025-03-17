@@ -13,4 +13,11 @@ public interface ReadOnlyUserPrefs {
 
     Path getAddressBookFilePath();
 
+    // New method to configure the display of the different fields
+    boolean getShowName();
+    boolean getShowPhone();
+    boolean getShowEmail();
+    boolean getShowAddress();
+    boolean getShowTags(); 
+
 }

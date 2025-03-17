@@ -22,7 +22,7 @@ public interface Model {
     /**
      * Returns the user prefs.
      */
-    ReadOnlyUserPrefs getUserPrefs();
+    UserPrefs getUserPrefs();
 
     /**
      * Returns the user prefs' GUI settings.

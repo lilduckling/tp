@@ -11,6 +11,7 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
+import seedu.address.model.UserPrefs;
 
 /**
  * The manager of the UI component.
@@ -40,7 +41,8 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, logic);
+            UserPrefs userPrefs = logic.getUserPrefs(); // Get the UserPrefs instance from logic
+            mainWindow = new MainWindow(primaryStage, logic, userPrefs);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
 

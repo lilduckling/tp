@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 
 /**
@@ -44,16 +45,40 @@ public class PersonCard extends UiPart<Region> {
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
-    public PersonCard(Person person, int displayedIndex) {
+    public PersonCard(Person person, UserPrefs userPrefs) {
         super(FXML);
         this.person = person;
-        id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);
-        person.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        if (userPrefs.getShowName()) {
+            name.setText(person.getName().fullName);
+        } else {
+            name.setVisible(false);
+        }
+
+        if (userPrefs.getShowPhone()) {
+            phone.setText(person.getPhone().value);
+        } else {
+            phone.setVisible(false);
+        }
+
+        if (userPrefs.getShowEmail()) {
+            email.setText(person.getEmail().value);
+        } else {
+            email.setVisible(false);
+        }
+
+        if (userPrefs.getShowAddress()) {
+            address.setText(person.getAddress().value);
+        } else {
+            address.setVisible(false);
+        }
+
+        if (userPrefs.getShowTags()) {
+            tags.getChildren().clear();
+            person.getTags().stream()
+                    .sorted(Comparator.comparing(tag -> tag.tagName))
+                    .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        } else {
+            tags.setVisible(false);
+        }
     }
 }
