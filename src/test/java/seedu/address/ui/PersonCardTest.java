@@ -1,12 +1,11 @@
 package seedu.address.ui;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +21,7 @@ import seedu.address.model.person.StudentId;
 import seedu.address.model.tag.Tag;
 
 public class PersonCardTest {
-
+// archive this test case as it is not relevant to the current implementation
     private static boolean isJavaFxInitialized = false;
 
     @BeforeAll
