@@ -89,9 +89,25 @@ Examples:
 
 ### Listing all persons : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all persons in the address book. You can customize the fields displayed in the person cards using prefixes.
 
-Format: `list`
+Format: `list [PREFIX]...`
+
+* If no prefixes are provided, all fields will be displayed by default.
+* Supported prefixes:
+  * `n/` - Show name
+  * `p/` - Show phone number
+  * `e/` - Show email
+  * `a/` - Show address
+  * `s/` - Show student ID
+  * `t/` - Show tags
+  * `tut/` - Show tutorials
+* You can combine multiple prefixes to display specific fields.
+
+Examples:
+* `list` - Displays all persons with all fields.
+* `list n/ p/` - Displays all persons with only their name and phone number.
+* `list n/ e/ t/` - Displays all persons with their name, email, and tags.
 
 ### Editing a person : `edit`
 
