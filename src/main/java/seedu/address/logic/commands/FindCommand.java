@@ -20,18 +20,24 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
-
-
     private final NameContainsKeywordsPredicate predicate;
 
+    /**
+     * Constructs a {@code FindCommand}.
+     *
+     * @param predicate The predicate to filter the list of persons.
+     */
     public FindCommand(NameContainsKeywordsPredicate predicate) {
+        assert predicate != null : "Predicate cannot be null";
         this.predicate = predicate;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
+        assert predicate != null : "Predicate must not be null before execution";
         model.updateFilteredPersonList(predicate);
+        assert model.getFilteredPersonList() != null : "Filtered person list must not be null after update";
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
